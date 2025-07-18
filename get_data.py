@@ -1,8 +1,10 @@
 import requests
 import json
 from constants import token
+import streamlit as st
 
 def get_trades():
+    token = st.secrets["token"]
     url = "https://streaming.bitquery.io/eap"
 
     query = """
