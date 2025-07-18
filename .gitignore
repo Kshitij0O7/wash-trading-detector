@@ -1,2 +1,3 @@
 constants.py
 .streamlit/secrets.toml
+__pycache__

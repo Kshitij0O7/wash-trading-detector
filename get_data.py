@@ -1,6 +1,5 @@
 import requests
 import json
-from constants import token
 import streamlit as st
 
 def get_trades():
