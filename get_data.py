@@ -3,7 +3,7 @@ import json
 import streamlit as st
 
 def get_trades():
-    token = st.secrets["token"]
+    token = st.secrets['token']
     url = "https://streaming.bitquery.io/eap"
 
     query = """
@@ -64,7 +64,7 @@ def get_trades():
 
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': f'Bearer ${token}'
+        'Authorization': f'Bearer {token}'
     }
 
     try:
