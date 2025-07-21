@@ -11,6 +11,7 @@ def get_trades():
         Solana {
             DEXTrades(
                 orderBy: {descending: Block_Time}
+                where: {Transaction: {Result: {Success: true}}}
             ) {
                 Trade {
                     Dex {
