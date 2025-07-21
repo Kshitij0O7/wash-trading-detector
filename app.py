@@ -38,11 +38,11 @@ total_trades = len(df)
 risk_score = min(100, int((wash_count / total_trades) * 100)) if total_trades else 0
 
 # ---- Streamlit UI ----
-st.set_page_config(page_title="Wash Trade Risk Dashboard", layout="wide")
+st.set_page_config(page_title="Solana Wash Trade Risk Dashboard", layout="wide")
 
-st.title("🚨 Wash Trading Risk Assessment")
+st.title("🚨 Solana Wash Trading Risk Assessment")
 
-st.button("🔍 Analyze Market Wash Trading Risk")
+st.button("🔍 Analyze Wash Trading Risk for Solana")
 
 # 🔵 Risk Score Section
 st.subheader("Risk Assessment")
