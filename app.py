@@ -37,19 +37,6 @@ wash_count = int(df["prediction"].sum())
 total_trades = len(df)
 risk_score = min(100, int((wash_count / total_trades) * 100)) if total_trades else 0
 
-# ---- Streamlit UI ----
-st.set_page_config(page_title="Solana Wash Trade Risk Dashboard", layout="wide")
-
-st.title("🚨 Solana Wash Trading Risk Assessment")
-
-st.button("🔍 Analyze Wash Trading Risk for Solana")
-
-# 🔵 Risk Score Section
-st.subheader("Risk Assessment")
-st.markdown(f"**Risk Score: `{risk_score}`** – {'High' if risk_score > 70 else 'Medium' if risk_score > 40 else 'Low'} Risk")
-st.progress(risk_score / 100)
-
-# Feilds for display and calculations
 df["timestamp"] = pd.to_datetime(df["Block.Time"], errors="coerce")
 df["volume"] = pd.to_numeric(df["Trade.Buy.AmountInUSD"], errors="coerce").fillna(0)
 df["suspiciousVolume"] = df.apply(
@@ -68,6 +55,20 @@ top_wallet_trade_count = df["Trade.Buy.Account.Address"].value_counts().iloc[0]
 wallet_contribution = round(100 * top_wallet_trade_count / len(df), 2)
 
 wash_volume_pct = round(100 * df["suspiciousVolume"].sum() / df["volume"].sum(), 2)
+
+# ---- Streamlit UI ----
+st.set_page_config(page_title="Solana Wash Trade Risk Dashboard", layout="wide")
+
+st.title("🚨 Solana Wash Trading Risk Assessment")
+
+st.button("🔍 Analyze Wash Trading Risk for Solana")
+
+# 🔵 Risk Score Section
+st.subheader("Risk Assessment")
+st.markdown(f"**Risk Score: `{risk_score}`** – {'High' if risk_score > 70 else 'Medium' if risk_score > 40 else 'Low'} Risk")
+st.progress(risk_score / 100)
+
+# Feilds for display and calculations
 
 # 🔵 Stat Cards
 col1, col2, col3, col4 = st.columns(4)
